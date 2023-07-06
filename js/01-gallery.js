@@ -22,7 +22,13 @@ gallery.addEventListener("click", (event) => {
     modal.append(newPic);
 
     instance = basicLightbox.create(modal);
+
+    function closeHandler() {
+        instance.close();
+        modal.removeEventListener("click", closeHandler);
+    }
     instance.show();
+    modal.addEventListener("click", closeHandler);
 });
 
 document.addEventListener("keydown", (event) => {
